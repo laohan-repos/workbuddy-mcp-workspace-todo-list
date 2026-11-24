@@ -1,0 +1,15 @@
+{
+  "name": "todo-app",
+  "version": "1.0.0",
+  "private": true,
+  "description": "零依赖的 Node.js 待办清单（原生 http + 原生前端）",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "mcp": "node mcp/todo-mcp.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

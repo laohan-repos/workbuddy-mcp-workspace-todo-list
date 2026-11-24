@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>待办清单 · Todo</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✅</text></svg>" />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <main class="app">
+    <header class="app-header">
+      <div>
+        <h1>待办清单</h1>
+        <p class="subtitle" id="today"></p>
+        <span class="live" id="live" title="MCP / 其他窗口的改动会实时同步到这里">
+          <i></i><span id="liveText">正在连接…</span>
+        </span>
+      </div>
+      <div class="progress" title="完成进度">
+        <svg viewBox="0 0 44 44" class="ring">
+          <circle class="ring-bg" cx="22" cy="22" r="18" />
+          <circle class="ring-fg" id="ring" cx="22" cy="22" r="18" />
+        </svg>
+        <span id="percent">0%</span>
+      </div>
+    </header>
+
+    <form class="composer" id="composer" autocomplete="off">
+      <input id="input" type="text" maxlength="200" placeholder="添加一件待办，回车确认…" aria-label="新待办内容" />
+      <button type="submit" id="addBtn" aria-label="添加">
+        <svg viewBox="0 0 24 24" width="20" height="20"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </form>
+
+    <nav class="filters" id="filters">
+      <button class="filter active" data-filter="all">全部 <b id="countAll">0</b></button>
+      <button class="filter" data-filter="active">未完成 <b id="countActive">0</b></button>
+      <button class="filter" data-filter="done">已完成 <b id="countDone">0</b></button>
+    </nav>
+
+    <ul class="list" id="list"></ul>
+
+    <div class="empty" id="empty" hidden>
+      <div class="empty-icon">🎉</div>
+      <p id="emptyText">还没有待办，添加第一条吧</p>
+    </div>
+
+    <footer class="app-footer">
+      <span id="summary" class="summary"></span>
+      <button id="clearDone" class="clear-btn" disabled>清除已完成</button>
+    </footer>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="/app.js"></script>
+</body>
+</html>
